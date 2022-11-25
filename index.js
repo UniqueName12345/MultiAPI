@@ -1,8 +1,10 @@
 import express from "express";
+import facts from "./facts.json";
 const app = express();
 
-app.get("/test", (req, res) => {
-  res.send("Testing 123");
+app.get("/fact/random", (req, res) => {
+  const randomFact = facts[Math.floor(Math.random() * facts.length)].fact;
+  res.send(randomFact);
 });
 
 app.listen(3000, () => {
